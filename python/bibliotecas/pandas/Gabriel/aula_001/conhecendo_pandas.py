@@ -5,7 +5,7 @@
 # Ele é como uma planilha do Excel ou uma tabela de banco de dados, 
 # onde os dados são organizados em linhas e colunas.
 
-# Quabdo você instala o pandas, você pode importá-lo no seu código Python ultilizando o comando abaixo:
+# Quando você instala o pandas, você pode importá-lo no seu código Python ultilizando o comando abaixo:
 
 # Importando a biblioteca pandas como "pd":
 import pandas as pd 
