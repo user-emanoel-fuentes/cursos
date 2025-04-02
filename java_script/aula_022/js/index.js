@@ -1,24 +1,30 @@
 function meuEscopo() {
     // Obtendo os dados;
     const form = document.querySelector(".form");
-    
+    const pessoas = [];
 
-
-    // Aguardando evento:
-    // form.onsubmit = evento => evento.preventDefault(); // modo antigo de fazer.
-    function automacao(nome, sobrenome, peso, altura) {
-
-        // Imprime dados no body
-        const divResultado = document.querySelector(".resultado");
-        divResultado.innerHTML += `<p>${nome} ${sobrenome}, ${peso}KG, ${altura}m.</p>` 
-
-        // Retorna objeto;
-        return {nome, sobrenome, peso, altura};
+    function empurrarDado(dado) {
+        pessoas.push(dado);
+        return pessoas;
     }
 
+    // form.onsubmit = evento => evento.preventDefault(); // modo antigo de fazer.
+    function automacao(nome, sobrenome, peso, altura) {
+        const dado = {
+            nome:nome.value,
+            sobrenome:sobrenome.value,
+            peso:peso.value,
+            altura:altura.value,
+        };
+        
+        // Imprime dados no body
+        const divResultado = document.querySelector(".resultado");
+        divResultado.innerHTML += `<p>${dado.nome} ${dado.sobrenome}, ${dado.peso}KG, ${dado.altura}m.</p>`;
+        
+        return empurrarDado(dado);
+    }
 
-
-    function recenerEventoForm(evento) {
+    function recebeEventoForm(evento) {
         evento.preventDefault();
 
         const nome = form.querySelector(".nome");
@@ -26,14 +32,10 @@ function meuEscopo() {
         const peso = form.querySelector(".peso");
         const altura = form.querySelector(".altura");
 
-        console.log(automacao(nome.value, sobrenome.value, peso.value, altura.value));
-        
-
-        // console.log(nome.value, sobrenome.value, peso.value, altura.value);
-        
-        
+        console.log(automacao(nome, sobrenome, peso, altura));
     }
 
-    form.addEventListener("submit", recenerEventoForm);
+    form.addEventListener("submit", recebeEventoForm);
 }
+
 meuEscopo();
