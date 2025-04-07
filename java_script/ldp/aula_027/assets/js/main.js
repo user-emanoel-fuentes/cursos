@@ -28,7 +28,7 @@ function mainScope() {
     
     // Alimentar div "resultado" com o condicional verdadeiro;
     function printData(data){
-        const divResult = form.querySelector(".result")
+        const divResult = form.querySelector(".result");
         if (data.imc && data.message) {
             divResult.innerHTML = `Seu IMC é ${data.imc} (${data.message}).`
         } else {
@@ -42,15 +42,20 @@ function mainScope() {
         event.preventDefault();
         
         // Obter dados digitaligados;
-        const weight = form.querySelector("#input-weight");
-        const height = form.querySelector("#input-height");
+
+
+        const inputWeight = form.querySelector("#input-weight");
+        const weight = Number(inputWeight.value);
+
+        const inputHeight = form.querySelector("#input-height");
+        const height = Number(inputHeight.value);
 
         // Previnindo entradas corretas:
-        if (!weight.value && height.value) {
+        if (!weight && height) {
             printData({message: "Preencha o campo PESO."})
-        } else if (weight.value && !height.value) {
+        } else if (weight && !height) {
             printData({message: "Preencha o campo ALTURA."})
-        } else if (!weight.value && !height.value) {
+        } else if (!weight && !height) {
             printData({message: "Preencha os campos PESO e ALTURA."})
         } else {
             const imc = calculateIMC(weight.value, height.value);
@@ -64,3 +69,25 @@ function mainScope() {
     form.addEventListener("submit", getEvent);
 }
 mainScope();
+
+
+// OBS: 
+
+// É possível criar uma marcadores html através do método createElement("")
+/* SINTAX EXEMPLO:
+    1- Selecionando DIV de ID "resultado":
+    const result = document.querySelector("#resultado");
+
+    2- Criando marcador parágrafo:
+    const p = document.createElement("p");
+
+    3- Atribuindo mais informações ao marcador gerado:
+    p.innerHTML = "Texto que ficará dentro do marcador!"
+
+    4 - Atrelando marcador a DIV "result":
+    result.appendChild(p);
+*/
+
+// Também podemos atribuir uma classe para o marcador criado:
+
+// p.classList.add("nome-da-classe"); "Com isso, é possível atribuir diferentes comportamentos CSS que serão iniciados a partir de classes"
