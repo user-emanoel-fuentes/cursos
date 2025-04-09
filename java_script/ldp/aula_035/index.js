@@ -37,3 +37,7 @@ for (let valor of nome) {
 frutas.forEach(function(valor, indice, array){
     console.log(valor, indice, array);
 });
+
+// for clássico : Geralmente com iteráveis (array, strings)
+// for in : Retorna indice ou valor (string, array, objeto)
+// for of : Retorna valor (iteráveis, strings ou array)
